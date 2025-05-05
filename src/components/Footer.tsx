@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { Github, Instagram, Linkedin, Twitter } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -8,12 +8,12 @@ const Footer = () => {
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-slate-light text-sm mb-4 md:mb-0">
-            Designed & Built with <span className="text-teal">♥</span>
+            Designed & Built by <span className="text-teal">akSquare</span>
           </p>
           
           <div className="flex items-center space-x-6">
             <a 
-              href="#" 
+              href="https://github.com/akSquareSol" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-slate-light hover:text-teal transition-colors"
@@ -22,7 +22,7 @@ const Footer = () => {
               <Github size={20} />
             </a>
             <a 
-              href="#" 
+              href="" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-slate-light hover:text-teal transition-colors"
@@ -35,9 +35,9 @@ const Footer = () => {
               target="_blank" 
               rel="noopener noreferrer"
               className="text-slate-light hover:text-teal transition-colors"
-              aria-label="Twitter"
+              aria-label="Instagram"
             >
-              <Twitter size={20} />
+              <Instagram size={20} />
             </a>
           </div>
         </div>

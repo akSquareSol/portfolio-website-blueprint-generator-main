@@ -6,7 +6,7 @@ const About = () => {
   return (
     <section id="about">
       <div className="container mx-auto">
-        <h2 className="section-heading">About Us</h2>
+        <h2 className="section-heading">About us</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="animate-fade-in-up">

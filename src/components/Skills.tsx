@@ -1,49 +1,38 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import {
-  Code,
-  FileCode,
-  FileJson,
-  Database,
-  Server,
-  Laptop,
-  Cloud,
-  Terminal,
-  GitBranch
-} from "lucide-react";
 
 interface Skill {
   name: string;
   level: number;
-  icon: React.ElementType;
+  logo: string;
   category: 'frontend' | 'backend' | 'other';
 }
 
 const allSkills: Skill[] = [
   // Frontend
-  { name: 'HTML', level: 90, icon: Code, category: 'frontend' },
-  { name: 'CSS', level: 85, icon: FileCode, category: 'frontend' },
-  { name: 'JavaScript (ES6+)', level: 80, icon: FileJson, category: 'frontend' },
-  { name: 'React', level: 80, icon: Code, category: 'frontend' },
-  { name: 'TypeScript', level: 75, icon: FileCode, category: 'frontend' },
-  { name: 'Tailwind CSS', level: 70, icon: FileCode, category: 'frontend' },
-  { name: 'NextJS', level: 65, icon: Laptop, category: 'frontend' },
+  { name: 'HTML', level: 90, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg", category: 'frontend' },
+  { name: 'CSS', level: 85, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg", category: 'frontend' },
+  { name: 'JavaScript', level: 80, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg", category: 'frontend' },
+  { name: 'React', level: 80, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", category: 'frontend' },
+  { name: 'TypeScript', level: 75, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg", category: 'frontend' },
+  { name: 'Tailwind CSS', level: 70, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/tailwindcss/tailwindcss-plain-wordmark.svg", category: 'frontend' },
+  { name: 'NextJS', level: 65, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg", category: 'frontend' },
 
   // Backend
-  { name: 'Node.js', level: 75, icon: Server, category: 'backend' },
-  { name: 'SQL', level: 70, icon: Database, category: 'backend' },
-  { name: 'C++', level: 80, icon: Terminal, category: 'backend' },
-  { name: 'Python', level: 70, icon: Terminal, category: 'backend' },
-  { name: 'Kotlin', level: 60, icon: Code, category: 'backend' },
+  { name: 'Node.js', level: 75, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", category: 'backend' },
+  { name: 'SQL', level: 70, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg", category: 'backend' },
+  { name: 'C++', level: 80, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg", category: 'backend' },
+  { name: 'Python', level: 70, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg", category: 'backend' },
+  { name: 'Kotlin', level: 60, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg", category: 'backend' },
 
   // DevOps & Tools
-  { name: 'Docker', level: 65, icon: Server, category: 'other' },
-  { name: 'Kubernetes', level: 60, icon: Cloud, category: 'other' },
-  { name: 'Jenkins', level: 60, icon: Server, category: 'other' },
-  { name: 'AWS', level: 55, icon: Cloud, category: 'other' },
-  { name: 'Git', level: 80, icon: GitBranch, category: 'other' },
-  { name: 'Linux', level: 75, icon: Terminal, category: 'other' },
+  { name: 'Docker', level: 65, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg", category: 'other' },
+  { name: 'Kubernetes', level: 60, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg", category: 'other' },
+  { name: 'Jenkins', level: 60, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg", category: 'other' },
+  { name: 'AWS', level: 55, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/amazonwebservices/amazonwebservices-original-wordmark.svg", category: 'other' },
+  { name: 'Git', level: 80, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg", category: 'other' },
+  { name: 'Linux', level: 75, logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg", category: 'other' },
 ];
 
 const categories = [
@@ -54,7 +43,7 @@ const categories = [
 
 const Skills: React.FC = () => {
   return (
-    <section id="skills" className="bg-navy-light scroll-mt-20">
+    <section id="skills" className="bg-navy-light scroll-mt-10">
       <div className="container mx-auto py-16">
         <h2 className="section-heading mb-12">Skills</h2>
 
@@ -98,17 +87,17 @@ const AnimatedSkillCard: React.FC<{ skill: Skill }> = ({ skill }) => {
           observer.disconnect();
         }
       },
-      { threshold: 0.1 }  // fire when 10% visible
+      { threshold: 0.1 }
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
 
-  // Animate from 0 → skill.level once visible
+  // Animate from 0 → skill.level
   useEffect(() => {
     if (!visible) return;
     let start: number | null = null;
-    const duration = 1000; // 1 second
+    const duration = 1000;
     const step = (timestamp: number) => {
       if (!start) start = timestamp;
       const progress = Math.min((timestamp - start) / duration, 1);
@@ -126,7 +115,11 @@ const AnimatedSkillCard: React.FC<{ skill: Skill }> = ({ skill }) => {
         <CardContent className="p-6">
           <div className="flex items-center mb-4">
             <div className="p-2 rounded-md bg-slate-dark mr-4">
-              <skill.icon className="h-6 w-6 text-teal" />
+              <img
+                src={skill.logo}
+                alt={`${skill.name} logo`}
+                className="h-6 w-6 object-contain"
+              />
             </div>
             <h4 className="font-medium text-white">{skill.name}</h4>
           </div>

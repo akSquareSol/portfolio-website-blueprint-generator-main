@@ -16,7 +16,7 @@ interface Project {
 
 const Projects = () => {
   const [filter, setFilter] = useState<string | null>(null);
-  
+
   const projects: Project[] = [
     {
       id: 1,
@@ -92,42 +92,6 @@ const Projects = () => {
     },
     {
       id: 9,
-      title: "Breadth First Search Visualizer",
-      description: "A graphical visualizer to illustrate the BFS algorithm on graphs.",
-      image: "https://images.unsplash.com/photo-1581093466430-1b3c3e8ba1b6",
-      tags: ["JavaScript", "Canvas", "Algorithms"],
-      demoLink: "#",
-      codeLink: "#",
-    },
-    {
-      id: 10,
-      title: "Depth First Search Visualizer",
-      description: "A graphical visualizer to illustrate the DFS algorithm on graphs.",
-      image: "https://images.unsplash.com/photo-1581093466179-17ccf60a1dc2",
-      tags: ["JavaScript", "Canvas", "Algorithms"],
-      demoLink: "#",
-      codeLink: "#",
-    },
-    {
-      id: 11,
-      title: "Dijkstra's Algorithm Visualizer",
-      description: "An interactive tool to visualize Dijkstra's shortest path algorithm.",
-      image: "https://images.unsplash.com/photo-1581093465843-fb5e3c691e46",
-      tags: ["JavaScript", "Canvas", "Algorithms"],
-      demoLink: "#",
-      codeLink: "#",
-    },
-    {
-      id: 12,
-      title: "A* Algorithm Visualizer",
-      description: "A visualization of the A* pathfinding algorithm demonstrating heuristic search.",
-      image: "https://images.unsplash.com/photo-1581093466071-0dcae8e33c1f",
-      tags: ["JavaScript", "Canvas", "Algorithms"],
-      demoLink: "#",
-      codeLink: "#",
-    },
-    {
-      id: 13,
       title: "Weather Android Application",
       description: "An Android weather app fetching data via Retrofit, built with Kotlin and XML.",
       image: "https://images.unsplash.com/photo-1500673922987-e212871fec22",
@@ -136,7 +100,7 @@ const Projects = () => {
       codeLink: "#",
     },
     {
-      id: 14,
+      id: 10,
       title: "Shopping Website",
       description: "A basic e-commerce website built with HTML, CSS, and Bootstrap.",
       image: "https://images.unsplash.com/photo-1495121605193-b116b5b09a60",
