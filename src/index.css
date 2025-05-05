@@ -1,0 +1,71 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 33% 11%;
+    --foreground: 213 24% 73%;
+
+    --card: 210 33% 15%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 210 33% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 171 100% 69%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 34% 28%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 213 27% 29%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 171 100% 69%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 25%;
+    --input: 214.3 31.8% 25%;
+    --ring: 171 100% 69%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-navy text-slate font-sans;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading text-white;
+  }
+  
+  section {
+    @apply py-16 md:py-24;
+  }
+  
+  .container {
+    @apply px-4 md:px-6;
+  }
+  
+  .section-heading {
+    @apply text-2xl md:text-3xl font-bold mb-8 relative inline-block;
+  }
+  
+  .section-heading::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-1/2 h-1 bg-teal;
+  }
+}
