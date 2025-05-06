@@ -34,6 +34,7 @@ const Navbar = () => {
       )}
     >
       <div className="container mx-auto flex justify-between items-center">
+        {/* Changed to Link to "/" which should lead to the home/hero page */}
         <Link to="/" className="text-teal font-heading text-xl font-bold">
           <span className="text-white">ak </span>Square Sol
         </Link>
@@ -83,7 +84,8 @@ const Navbar = () => {
                 {link.name}
               </a>
             ))}
-            <Link to="/Hero">
+            {/* Fixed the Resume button to link to "/resume" instead of "/Hero" */}
+            <Link to="/resume">
               <Button
                 className="bg-transparent text-teal border border-teal hover:bg-teal/10 w-full"
                 onClick={() => setIsOpen(false)}

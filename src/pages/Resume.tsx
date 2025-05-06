@@ -4,6 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import { Download, ExternalLink, Calendar, MapPin, Mail, Phone, Linkedin, Award, Book, Code, Briefcase } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import Navbar from '@/components/Navbar'; // Import the Navbar component
 
 const Resume = () => {
   const [activeTab, setActiveTab] = useState("anunay");
@@ -15,46 +16,52 @@ const Resume = () => {
   };
 
   return (
-    <section id="resume" className="bg-navy-light scroll-mt-10">
-      <div className="container mx-auto">
-        <h2 className="section-heading mb-8">Our Resumes</h2>
-        <p className="text-slate-light max-w-3xl mx-auto text-center mb-8">
-          Get to know our professional backgrounds, skills, and experiences that make us a great team for your next project.
-        </p>
+    <div className="min-h-screen bg-navy text-slate">
+      {/* Include the Navbar component here */}
+      <Navbar />
+      
+      {/* Add padding-top to account for the fixed navbar */}
+      <section id="resume" className="bg-navy-light scroll-mt-10 pt-24">
+        <div className="container mx-auto">
+          <h2 className="section-heading mb-8">Our Resumes</h2>
+          <p className="text-slate-light max-w-3xl mx-auto text-center mb-8">
+            Get to know our professional backgrounds, skills, and experiences that make us a great team for your next project.
+          </p>
 
-        <Tabs 
-          defaultValue="anunay" 
-          value={activeTab}
-          onValueChange={setActiveTab}
-          className="w-full animate-fade-in-up"
-        >
-          <div className="flex justify-center mb-8">
-            <TabsList className="bg-navy-dark border border-slate-dark">
-              <TabsTrigger 
-                value="anunay" 
-                className="data-[state=active]:bg-teal data-[state=active]:text-navy"
-              >
-                Anunay Kumar
-              </TabsTrigger>
-              <TabsTrigger 
-                value="apoorav" 
-                className="data-[state=active]:bg-teal data-[state=active]:text-navy"
-              >
-                Apoorav Kumar
-              </TabsTrigger>
-            </TabsList>
-          </div>
+          <Tabs 
+            defaultValue="anunay" 
+            value={activeTab}
+            onValueChange={setActiveTab}
+            className="w-full animate-fade-in-up"
+          >
+            <div className="flex justify-center mb-8">
+              <TabsList className="bg-navy-dark border border-slate-dark">
+                <TabsTrigger 
+                  value="anunay" 
+                  className="data-[state=active]:bg-teal data-[state=active]:text-navy"
+                >
+                  Anunay Kumar
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="apoorav" 
+                  className="data-[state=active]:bg-teal data-[state=active]:text-navy"
+                >
+                  Apoorav Kumar
+                </TabsTrigger>
+              </TabsList>
+            </div>
 
-          <TabsContent value="anunay" className="animate-fade-in-up">
-            <ResumeAnunay downloadResume={() => downloadResume("Anunay")} />
-          </TabsContent>
+            <TabsContent value="anunay" className="animate-fade-in-up">
+              <ResumeAnunay downloadResume={() => downloadResume("Anunay")} />
+            </TabsContent>
 
-          <TabsContent value="apoorav" className="animate-fade-in-up">
-            <ResumeApoorav downloadResume={() => downloadResume("Apoorav")} />
-          </TabsContent>
-        </Tabs>
-      </div>
-    </section>
+            <TabsContent value="apoorav" className="animate-fade-in-up">
+              <ResumeApoorav downloadResume={() => downloadResume("Apoorav")} />
+            </TabsContent>
+          </Tabs>
+        </div>
+      </section>
+    </div>
   );
 };
 
@@ -115,6 +122,7 @@ const ResumeAnunay = ({ downloadResume }: { downloadResume: () => void }) => {
         </CardContent>
       </Card>
 
+      {/* Rest of the ResumeAnunay component - unchanged */}
       {/* Education */}
       <Card className="mb-8 bg-navy border border-slate-dark">
         <CardContent className="p-6">
