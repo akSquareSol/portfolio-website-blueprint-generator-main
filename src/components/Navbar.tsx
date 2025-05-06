@@ -23,6 +23,23 @@ const Navbar = () => {
     { name: 'Projects', href: '#projects' },
     { name: 'Contact', href: '#contact' },
   ];
+  
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId.replace('#', ''));
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+      setIsOpen(false); // Close mobile menu after clicking
+    } else {
+      // If we're on a different page, navigate to home page with the hash
+      window.location.href = `/${sectionId}`;
+    }
+  };
+  
+  // Handle navigation link clicks
+  const handleNavLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    scrollToSection(href);
+  };
 
   return (
     <header
@@ -35,7 +52,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex justify-between items-center">
         {/* Changed to Link to "/" which should lead to the home/hero page */}
-        <Link to="/" className="text-teal font-heading text-xl font-bold">
+        <Link to="/" className="text-teal font-heading text-xl font-bold" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <span className="text-white">ak </span>Square Sol
         </Link>
 
@@ -46,6 +63,7 @@ const Navbar = () => {
               key={link.name}
               href={link.href}
               className="text-slate-light hover:text-teal transition duration-300"
+              onClick={(e) => handleNavLinkClick(e, link.href)}
             >
               {link.name}
             </a>
