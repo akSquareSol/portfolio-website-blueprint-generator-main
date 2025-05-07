@@ -1,0 +1,63 @@
+name: Deploy React App to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: dist
+          clean: true
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+      - name: Set base path for Vite build
+        run: |
+          # Extract repository name from GitHub repository context
+          REPO_NAME=$(echo $GITHUB_REPOSITORY | cut -d '/' -f 2)
+          # Update the base path in vite.config.js or create it if it doesn't exist
+          echo "Setting base path to /$REPO_NAME/"
+          if [ -f "vite.config.js" ]; then
+            sed -i "s|base: '.*'|base: '/$REPO_NAME/'|" vite.config.js || echo "Failed to update vite.config.js"
+          elif [ -f "vite.config.ts" ]; then
+            sed -i "s|base: '.*'|base: '/$REPO_NAME/'|" vite.config.ts || echo "Failed to update vite.config.ts"
+          else
+            echo "Warning: vite.config.js or vite.config.ts not found"
+          fi
+          
+      - name: Debug homepage in package.json
+        run: |
+          if grep -q "homepage" package.json; then
+            echo "Current homepage setting:"
+            grep "homepage" package.json
+            # Update homepage to match GitHub Pages URL format
+            sed -i 's|"homepage": ".*"|"homepage": "https://'"$GITHUB_REPOSITORY_OWNER"'.github.io/'"$REPO_NAME"'"|' package.json
+            echo "Updated homepage setting:"
+            grep "homepage" package.json
+          else
+            echo "No homepage setting found in package.json"
+          fi
