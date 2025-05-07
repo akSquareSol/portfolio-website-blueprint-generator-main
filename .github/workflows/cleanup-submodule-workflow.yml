@@ -1,0 +1,37 @@
+name: Cleanup Broken Submodule
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  fix-submodule:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: false
+
+      - name: Check if Portfolio-Edit submodule exists
+        id: check_submodule
+        run: |
+          if [ -d "Portfolio-Edit" ]; then
+            echo "submodule_exists=true" >> $GITHUB_ENV
+          else
+            echo "submodule_exists=false" >> $GITHUB_ENV
+
+      - name: Remove Portfolio-Edit submodule if it is broken
+        if: env.submodule_exists == 'true'
+        run: |
+          echo "Attempting to remove broken submodule Portfolio-Edit..."
+          git rm -f Portfolio-Edit || true
+          rm -rf .git/modules/Portfolio-Edit || true
+          git commit -am "Removed broken submodule Portfolio-Edit" || true
+
+      - name: Push changes
+        if: env.submodule_exists == 'true'
+        run: |
+          git push origin apoorav-updates
