@@ -20,12 +20,12 @@ const Projects = () => {
   const projects: Project[] = [
     {
       id: 1,
-      title: "Digital Khatabook",
-      description: "An accounting and bookkeeping web app for small business owners built with HTML, CSS, and JavaScript.",
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
-      tags: ["HTML", "CSS", "JavaScript"],
-      demoLink: "#",
-      codeLink: "#",
+      title: "Image Editing App",
+      description: "A modern web application for image editing with features like filters, cropping, and adjustments, built with React and Tailwind CSS.",
+      image: "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d",
+      tags: ["React", "Tailwind CSS"],
+      demoLink: "https://image-editing-nest.vercel.app",
+      codeLink: "https://github.com/akSquareSol/Image-Editing-Nest",
     },
     {
       id: 2,
@@ -41,9 +41,9 @@ const Projects = () => {
       title: "Weather App",
       description: "A web app displaying current weather and forecasts using the OpenWeatherMap API, built with React and CSS.",
       image: "https://i.ibb.co/3y3Sgtqx/Weather-App.png",
-      tags: ["React", "API", "CSS"],
+      tags: ["Kotlin", "Android", "API"],
       demoLink: "#",
-      codeLink: "#",
+      codeLink: "https://github.com/akSquareSol/weather-app.git",
     },
     {
       id: 4,
@@ -78,8 +78,8 @@ const Projects = () => {
       description: "An Android app for university administration built with Kotlin and XML to manage student data.",
       image: "https://i.ibb.co/HTJ5WVcT/Chat-GPT-Image-May-6-2025-11-55-50-AM.png",
       tags: ["Kotlin", "Android", "XML"],
-      demoLink: "#",
-      codeLink: "#",
+      demoLink: "https://github.com/akSquareSol/university-management-app/blob/main/app/src/main/java/com/apoorav/cuhub/LoginActivity.kt",
+      codeLink: "https://github.com/akSquareSol/university-management-app.git",
     },
     {
       id: 8,
@@ -87,8 +87,8 @@ const Projects = () => {
       description: "A visualization tool for sorting algorithms to demonstrate step-by-step operations.",
       image: "https://i.ibb.co/j9nbsPSL/Sorting-Alog.png",
       tags: ["JavaScript", "Canvas", "Algorithms"],
-      demoLink: "#",
-      codeLink: "#",
+      demoLink: "https://github.com/akSquareSol/sorting-visualizer/blob/main/src/algorithms/bfs.ts",
+      codeLink: "https://github.com/akSquareSol/sorting-visualizer.git",
     },
     // {
     //   id: 9,

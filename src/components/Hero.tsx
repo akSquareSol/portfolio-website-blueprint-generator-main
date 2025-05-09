@@ -10,7 +10,11 @@ const Hero = () => {
   const scrollToProjects = () => {
     const projectsSection = document.getElementById('projects');
     if (projectsSection) {
-      projectsSection.scrollIntoView({ behavior: 'smooth' });
+      // For better mobile compatibility
+      window.scrollTo({
+        top: projectsSection.offsetTop,
+        behavior: 'smooth'
+      });
     }
   };
 
